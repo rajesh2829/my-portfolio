@@ -1,9 +1,19 @@
-import Header from "@/components/Header";
+import Header from "../components/Header";
+import AboutSection from "../components/AboutSection";
+import PortfolioSection from "../components/PortfolioSection";
+import SkillsSection from "../components/SkillsSection";
+import ContactSection from "../components/ContactSection";
+import Footer from "../components/Footer";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <main>
+    <>
       <Header />
-    </main>
+      <AboutSection />
+      <PortfolioSection />
+      <SkillsSection />
+      <ContactSection />
+      <Footer />
+    </>
   );
 }
