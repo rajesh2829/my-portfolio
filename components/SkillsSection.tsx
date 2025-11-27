@@ -11,8 +11,8 @@ const skills = [
   { name: "Tailwind CSS", icon: <SiTailwindcss size={32} className="text-teal-400" /> },
   { name: "MongoDB", icon: <SiMongodb size={32} className="text-green-500" /> },
   { name: "Git", icon: <FaGitAlt size={32} className="text-orange-600" /> },
-  { name: "Manual Testing", icon: <FaGitAlt size={32} className="text-gray-600" /> }, // custom icon
-  { name: "Automation Testing", icon: <FaGitAlt size={32} className="text-gray-700" /> }, // custom icon
+  { name: "Manual Testing", icon: <FaGitAlt size={32} className="text-gray-600" /> },
+  { name: "Automation Testing", icon: <FaGitAlt size={32} className="text-gray-700" /> },
 ];
 
 
