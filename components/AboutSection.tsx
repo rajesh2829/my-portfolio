@@ -68,16 +68,23 @@ export default function AboutAndJourney() {
       icon: <FaUserGraduate size={18} />,
     },
     {
-      year: "2019 - 2023",
-      title: "Bachelor of Computer Science",
-      subtitle: "University Academic Study",
+      year: "2017 – 2021",
+      title: "Bachelor of Engineering in Agricultural Engineering",
+      subtitle: "SNS College of Technology",
       type: "education",
-      desc: "Acquired foundation skills in systems, networking, databases, and algorithms.",
+      desc: "Developed a strong foundation in agricultural engineering, engineering principles, agricultural technology, and modern farming systems.",
       achievements: [
-        "Graduated with top marks in Web Technologies and DBMS courses.",
-        "Led a 4-person team to deliver a final-year student management system capstone project."
+        "Graduated with a Bachelor of Engineering in Agricultural Engineering.",
+        "Gained practical knowledge of agricultural machinery, irrigation systems, soil and water management, and farm technologies.",
+        "Completed academic projects involving agricultural engineering concepts and technology-based solutions."
       ],
-      tags: ["C++", "Java", "DBMS", "Software Engineering", "Computer Networks"],
+      tags: [
+        "Agricultural Engineering",
+        "Irrigation & Water Management",
+        "Farm Machinery",
+        "Soil Science",
+        "Agricultural Technology"
+      ],
       icon: <FaRocket size={18} />,
     },
   ];
@@ -87,18 +94,18 @@ export default function AboutAndJourney() {
   );
 
   return (
-    <section 
-      id="about" 
+    <section
+      id="about"
       style={{ backgroundImage: 'linear-gradient(to bottom right, var(--bg-primary), var(--bg-secondary))' }}
       className="py-24 transition-all duration-300 relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6 relative z-10">
- 
+
         {/* =========================
              ABOUT SECTION (GRID)
          ========================== */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-           
+
           {/* LEFT — Interactive Developer Terminal Mockup */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
@@ -109,7 +116,7 @@ export default function AboutAndJourney() {
           >
             {/* Glowing Backdrop */}
             <div className="absolute -inset-2 bg-gradient-to-r from-primary to-secondary rounded-2xl blur-xl opacity-25 animate-pulse"></div>
-            
+
             <div className="relative bg-[#0b0e14] border border-white/10 rounded-2xl overflow-hidden shadow-2xl font-mono text-xs md:text-sm text-left">
               {/* Window Header */}
               <div className="flex items-center justify-between px-4 py-3 bg-[#11151d] border-b border-white/5">
@@ -137,7 +144,7 @@ export default function AboutAndJourney() {
               </div>
             </div>
           </motion.div>
- 
+
           {/* RIGHT — About Text & Badges */}
           <motion.div
             initial={{ opacity: 0, x: 60 }}
@@ -148,20 +155,20 @@ export default function AboutAndJourney() {
           >
             <span className="text-primary font-bold text-sm tracking-widest uppercase mb-2 block">Who I Am</span>
             <h2 className="text-4xl font-extrabold mb-6 text-text-main">About Me</h2>
- 
+
             <p className="text-lg text-text-sub leading-relaxed mb-8">
               I’m <span className="font-bold text-text-main">Rajesh</span>, a passionate
               <span className="text-primary font-semibold"> Full Stack Developer</span>{" "}
-              from India. I specialize in building modern, scalable applications 
+              from India. I specialize in building modern, scalable applications
               using React, Next.js, Node.js, and TypeScript.
               <br /><br />
               I love crafting smooth UI/UX experiences and turning complex ideas into clean digital products.
             </p>
- 
+
             {/* Stats */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 text-left mb-8">
               {[
-                { number: "2+", label: "Years Experience", icon: <FaBriefcase className="text-primary text-2xl mb-2" /> },
+                { number: "3+", label: "Years Experience", icon: <FaBriefcase className="text-primary text-2xl mb-2" /> },
                 { number: "12+", label: "Projects Completed", icon: <FaLaptopCode className="text-primary text-2xl mb-2" /> },
                 { number: "5+", label: "Tech Stacks Used", icon: <FaRocket className="text-primary text-2xl mb-2" /> },
               ].map((item, i) => (
@@ -176,7 +183,7 @@ export default function AboutAndJourney() {
                 </motion.div>
               ))}
             </div>
- 
+
             {/* Skills */}
             <div className="flex flex-wrap gap-2.5">
               {[
@@ -202,11 +209,11 @@ export default function AboutAndJourney() {
             </div>
           </motion.div>
         </div>
- 
+
         {/* =========================
              JOURNEY TIMELINE SECTION
          ========================== */}
- 
+
         <motion.div
           initial={{ opacity: 0, y: 35 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -227,11 +234,10 @@ export default function AboutAndJourney() {
               <button
                 key={tab.id}
                 onClick={() => setActiveCategory(tab.id as any)}
-                className={`relative z-10 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${
-                  activeCategory === tab.id
+                className={`relative z-10 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${activeCategory === tab.id
                     ? "text-white"
                     : "text-text-muted hover:text-text-primary"
-                }`}
+                  }`}
               >
                 {activeCategory === tab.id && (
                   <motion.div
@@ -245,7 +251,7 @@ export default function AboutAndJourney() {
             ))}
           </div>
         </motion.div>
- 
+
         <div className="relative max-w-4xl mx-auto px-2">
           {/* Vertical Timeline Line */}
           <div className="absolute left-6 sm:left-1/2 transform sm:-translate-x-1/2 top-0 bottom-0 w-1 bg-timeline/40 rounded-full transition-all duration-300" />
@@ -272,7 +278,7 @@ export default function AboutAndJourney() {
                     {/* Timeline Content Block */}
                     <div className={`w-full sm:w-[calc(50%-32px)] ml-14 sm:ml-0 ${isEven ? "sm:mr-auto" : "sm:ml-auto"}`}>
                       <div className="glass-card p-6 rounded-2xl shadow-sm border-l-4 border-l-primary hover:shadow-lg transition-all duration-300 text-left">
-                        
+
                         {/* Header Details */}
                         <div className="flex items-center justify-between gap-3 flex-wrap mb-3">
                           <div className="flex items-center gap-2">
@@ -325,7 +331,7 @@ export default function AboutAndJourney() {
           </div>
         </div>
       </div>
- 
+
       {/* GLASS EFFECT */}
       <style>{`
         .glass-card {

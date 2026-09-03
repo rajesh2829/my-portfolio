@@ -100,7 +100,7 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mt-6 text-base md:text-lg text-text-muted leading-relaxed max-w-xl"
           >
-            Specialist in high-performance **React Native (Expo)** mobile applications and scalable **Next.js & Node.js** web portals. Helping tech teams deploy clean, maintainable systems.
+            Specialist in high-performance React Native (Expo) mobile applications and scalable Next.js & Node.js web portals. Helping tech teams deploy clean, maintainable systems.
           </motion.p>
 
           {/* Call to Actions */}

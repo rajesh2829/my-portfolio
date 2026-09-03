@@ -176,7 +176,7 @@ export default function ContactSection() {
               </div>
               <div>
                 <p className="text-xs font-bold text-text-muted uppercase tracking-wider">Location</p>
-                <p className="text-base font-bold text-text-main mt-0.5">Bangalore, India</p>
+                <p className="text-base font-bold text-text-main mt-0.5">Dubai, UAE</p>
               </div>
             </div>
 

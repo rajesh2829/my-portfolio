@@ -100,9 +100,9 @@ export default function Navbar() {
             onClick={() => handleLinkClick("hero")}
             className="text-2xl font-black tracking-tight flex items-center gap-1 group cursor-pointer"
           >
-            <span className="text-primary group-hover:scale-105 transition-transform duration-300 font-mono">&lt;</span>
+            <span className="text-primary group-hover:scale-105 transition-transform duration-300 font-mono"></span>
             <span className="text-text-main font-bold">Rajesh</span>
-            <span className="text-primary group-hover:scale-105 transition-transform duration-300 font-mono">/&gt;</span>
+            <span className="text-primary group-hover:scale-105 transition-transform duration-300 font-mono"></span>
           </button>
 
           {/* DESKTOP NAVIGATION */}
