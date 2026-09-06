@@ -113,33 +113,33 @@ export default function ExpertiseSection() {
   }, [viewMode]);
 
   return (
-    <section id="expertise" className="w-full py-24 bg-surface transition-all duration-300 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="expertise" className="w-full py-16 sm:py-24 bg-surface transition-all duration-300 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* SECTION HEADER */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
           <div>
-            <span className="text-primary font-bold text-sm tracking-widest uppercase mb-2 block">My Capabilities</span>
-            <h2 className="text-4xl font-extrabold text-text-main">Expertise & Experience</h2>
+            <span className="text-primary font-bold text-xs sm:text-sm tracking-widest uppercase mb-2 block">My Capabilities</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-text-main">Expertise & Experience</h2>
           </div>
 
           {/* Toggle View Mode Control */}
-          <div className="flex items-center gap-1.5 p-1 bg-surface-tertiary border border-card-border rounded-full self-start shadow-inner">
+          <div className="flex items-center gap-1 p-1 bg-surface-tertiary border border-card-border rounded-full self-start shadow-inner">
             <button
               onClick={() => setViewMode("carousel")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold transition-all duration-300 ${
+              className={`flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-bold transition-all duration-300 cursor-pointer ${
                 viewMode === "carousel" ? "bg-primary text-white shadow-md" : "text-text-muted hover:text-text-primary"
               }`}
             >
-              <FaPlay className="text-[10px]" /> Carousel
+              <FaPlay className="text-[9px]" /> Carousel
             </button>
             <button
               onClick={() => setViewMode("grid")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold transition-all duration-300 ${
+              className={`flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-bold transition-all duration-300 cursor-pointer ${
                 viewMode === "grid" ? "bg-primary text-white shadow-md" : "text-text-muted hover:text-text-primary"
               }`}
             >
-              <FaColumns className="text-[10px]" /> Grid Layout
+              <FaColumns className="text-[9px]" /> Grid Layout
             </button>
           </div>
         </div>
@@ -160,7 +160,9 @@ export default function ExpertiseSection() {
                 ref={scrollRef}
                 onMouseEnter={() => { isHovered.current = true; }}
                 onMouseLeave={() => { isHovered.current = false; }}
-                className="flex gap-6 overflow-hidden no-scrollbar cursor-grab active:cursor-grabbing py-2"
+                onTouchStart={() => { isHovered.current = true; }}
+                onTouchEnd={() => { setTimeout(() => { isHovered.current = false; }, 2500); }}
+                className="flex gap-4 sm:gap-6 overflow-x-auto touch-scroll no-scrollbar cursor-grab active:cursor-grabbing py-2"
               >
                 {[...expertise, ...expertise].map((item, index) => (
                   <motion.div
@@ -168,21 +170,21 @@ export default function ExpertiseSection() {
                     whileHover={{ scale: 1.02, y: -4 }}
                     transition={{ duration: 0.3 }}
                     style={{ backgroundImage: `var(--expertise-card-${(index % 5) + 1})` }}
-                    className="min-w-[85vw] sm:min-w-[50vw] lg:min-w-[420px] rounded-2xl p-6 border border-card-border shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+                    className="min-w-[82vw] sm:min-w-[340px] md:min-w-[380px] lg:min-w-[420px] rounded-2xl p-5 sm:p-6 border border-card-border shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between shrink-0"
                   >
                     <div>
                       {/* Title & Icon Header */}
                       <div className="flex items-center justify-between mb-4">
-                        <h3 className="text-xl font-bold text-expertise-title pr-2">
+                        <h3 className="text-lg sm:text-xl font-bold text-expertise-title pr-2">
                           {item.title}
                         </h3>
-                        <div className="p-3 bg-white/40 dark:bg-black/20 rounded-xl text-primary shrink-0 border border-white/20">
+                        <div className="p-2.5 sm:p-3 bg-white/40 dark:bg-black/20 rounded-xl text-primary shrink-0 border border-white/20">
                           {item.icon}
                         </div>
                       </div>
 
                       {/* Tech stack badges */}
-                      <div className="flex flex-wrap gap-1.5 mb-6">
+                      <div className="flex flex-wrap gap-1.5 mb-5">
                         {item.stack.map((tech) => (
                           <span
                             key={tech}
@@ -194,10 +196,10 @@ export default function ExpertiseSection() {
                       </div>
 
                       {/* Accomplishment Bullet points */}
-                      <ul className="space-y-3.5 text-sm text-text-secondary">
+                      <ul className="space-y-2.5 sm:space-y-3.5 text-xs sm:text-sm text-text-secondary">
                         {item.points.map((point, i) => (
                           <li key={i} className="flex gap-2 items-start font-medium">
-                            <FaChevronRight className="text-primary text-[10px] shrink-0 mt-1.5" />
+                            <FaChevronRight className="text-primary text-[9px] shrink-0 mt-1" />
                             <span>{point}</span>
                           </li>
                         ))}
@@ -216,7 +218,7 @@ export default function ExpertiseSection() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
             >
               {expertise.map((item, index) => (
                 <motion.div

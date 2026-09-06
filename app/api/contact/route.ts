@@ -78,11 +78,13 @@ export async function POST(request: Request) {
         result = await response.json();
       } else {
         const text = await response.text();
+        console.warn("Web3Forms non-JSON response status:", response.status);
+
         return NextResponse.json(
           {
-            error: `Web3Forms returned a non-JSON error. This usually means the API key is invalid or blocked. Please verify your WEB3FORMS_ACCESS_KEY in .env.local.`
+            error: "Web3Forms API challenge encountered on server. Please submit directly from the browser.",
           },
-          { status: 400 }
+          { status: 502 }
         );
       }
 

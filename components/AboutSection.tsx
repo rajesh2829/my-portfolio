@@ -97,27 +97,27 @@ export default function AboutAndJourney() {
     <section
       id="about"
       style={{ backgroundImage: 'linear-gradient(to bottom right, var(--bg-primary), var(--bg-secondary))' }}
-      className="py-24 transition-all duration-300 relative overflow-hidden"
+      className="py-16 sm:py-24 transition-all duration-300 relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
 
         {/* =========================
              ABOUT SECTION (GRID)
          ========================== */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
 
           {/* LEFT — Interactive Developer Terminal Mockup */}
           <motion.div
-            initial={{ opacity: 0, x: -60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
             viewport={{ once: true }}
             className="lg:col-span-5 relative"
           >
             {/* Glowing Backdrop */}
-            <div className="absolute -inset-2 bg-gradient-to-r from-primary to-secondary rounded-2xl blur-xl opacity-25 animate-pulse"></div>
+            <div className="absolute -inset-2 bg-gradient-to-r from-primary to-secondary rounded-2xl blur-xl opacity-25 animate-pulse pointer-events-none"></div>
 
-            <div className="relative bg-[#0b0e14] border border-white/10 rounded-2xl overflow-hidden shadow-2xl font-mono text-xs md:text-sm text-left">
+            <div className="relative bg-[#0b0e14] border border-white/10 rounded-2xl overflow-hidden shadow-2xl font-mono text-xs sm:text-sm text-left">
               {/* Window Header */}
               <div className="flex items-center justify-between px-4 py-3 bg-[#11151d] border-b border-white/5">
                 <div className="flex gap-2">
@@ -130,7 +130,7 @@ export default function AboutAndJourney() {
               </div>
 
               {/* Window Body */}
-              <div className="p-6 space-y-2 text-[#e6edf3] leading-relaxed">
+              <div className="p-4 sm:p-6 space-y-1.5 sm:space-y-2 text-[#e6edf3] leading-relaxed overflow-x-auto no-scrollbar">
                 <p><span className="text-[#ff7b72]">const</span> <span className="text-[#d2a8ff]">developer</span> = &#123;</p>
                 <p className="pl-4"><span className="text-[#79c0ff]">name</span>: <span className="text-[#a5d6ff]">"Rajesh"</span>,</p>
                 <p className="pl-4"><span className="text-[#79c0ff]">role</span>: <span className="text-[#a5d6ff]">"Full Stack Developer"</span>,</p>
@@ -147,16 +147,16 @@ export default function AboutAndJourney() {
 
           {/* RIGHT — About Text & Badges */}
           <motion.div
-            initial={{ opacity: 0, x: 60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
             viewport={{ once: true }}
             className="lg:col-span-7"
           >
-            <span className="text-primary font-bold text-sm tracking-widest uppercase mb-2 block">Who I Am</span>
-            <h2 className="text-4xl font-extrabold mb-6 text-text-main">About Me</h2>
+            <span className="text-primary font-bold text-xs sm:text-sm tracking-widest uppercase mb-2 block">Who I Am</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 sm:mb-6 text-text-main">About Me</h2>
 
-            <p className="text-lg text-text-sub leading-relaxed mb-8">
+            <p className="text-base sm:text-lg text-text-sub leading-relaxed mb-6 sm:mb-8">
               I’m <span className="font-bold text-text-main">Rajesh</span>, a passionate
               <span className="text-primary font-semibold"> Full Stack Developer</span>{" "}
               from India. I specialize in building modern, scalable applications
@@ -166,26 +166,26 @@ export default function AboutAndJourney() {
             </p>
 
             {/* Stats */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 text-left mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-5 text-left mb-6 sm:mb-8">
               {[
-                { number: "3+", label: "Years Experience", icon: <FaBriefcase className="text-primary text-2xl mb-2" /> },
-                { number: "12+", label: "Projects Completed", icon: <FaLaptopCode className="text-primary text-2xl mb-2" /> },
-                { number: "5+", label: "Tech Stacks Used", icon: <FaRocket className="text-primary text-2xl mb-2" /> },
+                { number: "3+", label: "Years Experience", icon: <FaBriefcase className="text-primary text-xl sm:text-2xl mb-2" /> },
+                { number: "12+", label: "Projects Completed", icon: <FaLaptopCode className="text-primary text-xl sm:text-2xl mb-2" /> },
+                { number: "5+", label: "Tech Stacks Used", icon: <FaRocket className="text-primary text-xl sm:text-2xl mb-2" /> },
               ].map((item, i) => (
                 <motion.div
                   key={i}
                   whileHover={{ scale: 1.03, y: -4 }}
-                  className="glass-card p-5 rounded-2xl shadow-sm transition-all duration-300"
+                  className="glass-card p-4 sm:p-5 rounded-2xl shadow-sm transition-all duration-300"
                 >
                   {item.icon}
-                  <h3 className="text-3xl font-extrabold text-primary">{item.number}</h3>
-                  <p className="text-sm text-text-muted mt-1 font-medium">{item.label}</p>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-primary">{item.number}</h3>
+                  <p className="text-xs sm:text-sm text-text-muted mt-1 font-medium">{item.label}</p>
                 </motion.div>
               ))}
             </div>
 
             {/* Skills */}
-            <div className="flex flex-wrap gap-2.5">
+            <div className="flex flex-wrap gap-2">
               {[
                 "React",
                 "Next.js",
@@ -201,7 +201,7 @@ export default function AboutAndJourney() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: index * 0.05 }}
                   viewport={{ once: true }}
-                  className="px-4 py-2 bg-badge text-badge-text rounded-full text-xs font-semibold shadow-sm border border-card-border hover:bg-primary hover:text-white transition-all duration-300 cursor-default"
+                  className="px-3 sm:px-4 py-1.5 sm:py-2 bg-badge text-badge-text rounded-full text-xs font-semibold shadow-sm border border-card-border hover:bg-primary hover:text-white transition-all duration-300 cursor-default"
                 >
                   {skill}
                 </motion.span>
@@ -215,17 +215,17 @@ export default function AboutAndJourney() {
          ========================== */}
 
         <motion.div
-          initial={{ opacity: 0, y: 35 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-center mt-28 mb-10"
+          className="text-center mt-20 sm:mt-28 mb-8 sm:mb-10"
         >
-          <span className="text-primary font-bold text-sm tracking-widest uppercase mb-2 block">My History</span>
-          <h2 className="text-4xl font-extrabold text-text-main mb-6">My Journey</h2>
+          <span className="text-primary font-bold text-xs sm:text-sm tracking-widest uppercase mb-2 block">My History</span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-text-main mb-6">My Journey</h2>
 
           {/* Interactive Category Selector Tabs */}
-          <div className="relative inline-flex items-center gap-2 p-1.5 bg-surface-tertiary border border-card-border rounded-full shadow-inner max-w-full overflow-x-auto no-scrollbar">
+          <div className="relative inline-flex items-center gap-1.5 p-1 bg-surface-tertiary border border-card-border rounded-full shadow-inner max-w-full overflow-x-auto no-scrollbar">
             {[
               { id: "all", label: "All Milestones" },
               { id: "experience", label: "Work Experience" },
@@ -234,10 +234,11 @@ export default function AboutAndJourney() {
               <button
                 key={tab.id}
                 onClick={() => setActiveCategory(tab.id as any)}
-                className={`relative z-10 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${activeCategory === tab.id
+                className={`relative z-10 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 whitespace-nowrap cursor-pointer ${
+                  activeCategory === tab.id
                     ? "text-white"
                     : "text-text-muted hover:text-text-primary"
-                  }`}
+                }`}
               >
                 {activeCategory === tab.id && (
                   <motion.div
@@ -252,58 +253,58 @@ export default function AboutAndJourney() {
           </div>
         </motion.div>
 
-        <div className="relative max-w-4xl mx-auto px-2">
+        <div className="relative max-w-4xl mx-auto px-1 sm:px-2">
           {/* Vertical Timeline Line */}
-          <div className="absolute left-6 sm:left-1/2 transform sm:-translate-x-1/2 top-0 bottom-0 w-1 bg-timeline/40 rounded-full transition-all duration-300" />
+          <div className="absolute left-4 sm:left-1/2 transform sm:-translate-x-1/2 top-0 bottom-0 w-0.5 sm:w-1 bg-timeline/40 rounded-full transition-all duration-300" />
 
-          <div className="space-y-12">
+          <div className="space-y-8 sm:space-y-12">
             <AnimatePresence mode="popLayout">
               {filteredTimeline.map((item, index) => {
                 const isEven = index % 2 === 0;
                 return (
                   <motion.div
                     layout
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 25 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.4 }}
                     key={item.title}
                     className="relative flex flex-col sm:flex-row items-start sm:items-center"
                   >
                     {/* Timeline Pulse Marker */}
-                    <div className="absolute left-6 sm:left-1/2 transform -translate-x-[10px] sm:-translate-x-1/2 w-6 h-6 rounded-full bg-surface border-4 border-primary flex items-center justify-center z-20 shadow-md">
+                    <div className="absolute left-4 sm:left-1/2 transform -translate-x-1/2 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-surface border-[3px] sm:border-4 border-primary flex items-center justify-center z-20 shadow-md">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                     </div>
 
                     {/* Timeline Content Block */}
-                    <div className={`w-full sm:w-[calc(50%-32px)] ml-14 sm:ml-0 ${isEven ? "sm:mr-auto" : "sm:ml-auto"}`}>
-                      <div className="glass-card p-6 rounded-2xl shadow-sm border-l-4 border-l-primary hover:shadow-lg transition-all duration-300 text-left">
+                    <div className={`w-[calc(100%-28px)] sm:w-[calc(50%-32px)] ml-7 sm:ml-0 ${isEven ? "sm:mr-auto" : "sm:ml-auto"}`}>
+                      <div className="glass-card p-4 sm:p-6 rounded-2xl shadow-sm border-l-4 border-l-primary hover:shadow-lg transition-all duration-300 text-left">
 
                         {/* Header Details */}
-                        <div className="flex items-center justify-between gap-3 flex-wrap mb-3">
-                          <div className="flex items-center gap-2">
-                            <div className="flex items-center justify-center w-8 h-8 bg-primary/10 text-primary rounded-xl">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-3 mb-3">
+                          <div className="flex items-center gap-2.5">
+                            <div className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 bg-primary/10 text-primary rounded-xl shrink-0">
                               {item.icon}
                             </div>
                             <div>
-                              <h4 className="text-base font-bold text-text-main">{item.title}</h4>
+                              <h4 className="text-sm sm:text-base font-bold text-text-main leading-snug">{item.title}</h4>
                               {item.subtitle && <p className="text-xs text-text-muted font-medium">{item.subtitle}</p>}
                             </div>
                           </div>
-                          <span className="text-xs font-extrabold text-primary bg-primary/10 px-3 py-1 rounded-full shrink-0">
+                          <span className="self-start sm:self-auto text-[11px] sm:text-xs font-extrabold text-primary bg-primary/10 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full shrink-0">
                             {item.year}
                           </span>
                         </div>
 
                         {/* Description */}
-                        <p className="text-text-sub text-sm leading-relaxed mb-4">{item.desc}</p>
+                        <p className="text-text-sub text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">{item.desc}</p>
 
                         {/* Achievements Bullet List */}
                         {item.achievements.length > 0 && (
-                          <ul className="space-y-2 mb-4 text-xs text-text-sub font-normal">
+                          <ul className="space-y-1.5 sm:space-y-2 mb-3 sm:mb-4 text-xs text-text-sub font-normal">
                             {item.achievements.map((ach, idx) => (
                               <li key={idx} className="flex gap-2 items-start">
-                                <FaCheckCircle className="text-primary text-xs shrink-0 mt-0.5" />
+                                <FaCheckCircle className="text-primary text-[11px] sm:text-xs shrink-0 mt-0.5" />
                                 <span>{ach}</span>
                               </li>
                             ))}
