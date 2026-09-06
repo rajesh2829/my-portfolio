@@ -4,8 +4,8 @@ import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="py-6 bg-surface-secondary text-text-muted border-t border-card-border text-center transition-all duration-300">
-      <p className="text-sm">© {new Date().getFullYear()} Rajesh. All rights reserved.</p>
+    <footer className="pt-6 pb-16 sm:pb-8 bg-surface-secondary text-text-muted border-t border-card-border text-center transition-all duration-300">
+      <p className="text-xs sm:text-sm">© {new Date().getFullYear()} Rajesh. All rights reserved.</p>
       <div className="flex justify-center gap-4 mt-3">
         <a 
           href="https://github.com/username" 

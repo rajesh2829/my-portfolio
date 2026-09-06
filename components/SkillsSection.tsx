@@ -81,42 +81,42 @@ export default function SkillsSection() {
   ];
 
   return (
-    <section id="skills" className="py-24 bg-surface transition-all duration-300 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+    <section id="skills" className="py-16 sm:py-24 bg-surface transition-all duration-300 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         
         {/* HEADER */}
-        <div className="text-center mb-16">
-          <span className="text-primary font-bold text-sm tracking-widest uppercase mb-2 block">My Tech Stack</span>
-          <h2 className="text-4xl font-extrabold text-text-main">Skills & Toolsets</h2>
+        <div className="text-center mb-10 sm:mb-16">
+          <span className="text-primary font-bold text-xs sm:text-sm tracking-widest uppercase mb-2 block">My Tech Stack</span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-text-main">Skills & Toolsets</h2>
         </div>
 
         {/* CATEGORIES GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {skillCategories.map((category, catIdx) => (
             <motion.div
               key={category.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: catIdx * 0.1 }}
-              className="bg-card border border-card-border rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300"
+              transition={{ duration: 0.5, delay: catIdx * 0.08 }}
+              className="bg-card border border-card-border rounded-2xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-300"
             >
-              <h3 className="text-xl font-bold text-text-main mb-6 border-b border-card-border pb-3 text-left">
+              <h3 className="text-lg sm:text-xl font-bold text-text-main mb-4 sm:mb-6 border-b border-card-border pb-3 text-left">
                 {category.title}
               </h3>
 
               {/* Skills cards grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-4">
                 {category.skills.map((skill, idx) => (
                   <motion.div
                     key={skill.name}
                     whileHover={{ scale: 1.04, y: -2 }}
-                    className="flex flex-col items-center gap-3 p-4 bg-surface-secondary border border-card-border rounded-xl shadow-sm hover:shadow-md transition-all duration-300 cursor-default"
+                    className="flex flex-col items-center justify-center gap-2 sm:gap-3 p-3 sm:p-4 bg-surface-secondary border border-card-border rounded-xl shadow-sm hover:shadow-md transition-all duration-300 cursor-default min-h-[96px] sm:min-h-[110px]"
                   >
-                    <div className="p-2.5 bg-card rounded-lg border border-card-border shadow-inner transition-all duration-300">
+                    <div className="p-2 sm:p-2.5 bg-card rounded-lg border border-card-border shadow-inner transition-all duration-300">
                       {skill.icon}
                     </div>
-                    <span className="text-text-primary text-xs font-bold text-center transition-colors duration-300">
+                    <span className="text-text-primary text-[11px] sm:text-xs font-bold text-center transition-colors duration-300 leading-tight line-clamp-2">
                       {skill.name}
                     </span>
                   </motion.div>

@@ -87,22 +87,21 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? "bg-card/85 backdrop-blur-lg py-4 border-b border-card-border/60 shadow-md"
-            : "bg-transparent py-6 border-b border-transparent"
+            ? "bg-card/90 backdrop-blur-lg py-3.5 sm:py-4 border-b border-card-border/70 shadow-md"
+            : "bg-transparent py-4 sm:py-6 border-b border-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
           
           {/* LOGO */}
           <button 
             onClick={() => handleLinkClick("hero")}
-            className="text-2xl font-black tracking-tight flex items-center gap-1 group cursor-pointer"
+            className="text-xl sm:text-2xl font-black tracking-tight flex items-center gap-1 group cursor-pointer"
           >
-            <span className="text-primary group-hover:scale-105 transition-transform duration-300 font-mono"></span>
             <span className="text-text-main font-bold">Rajesh</span>
-            <span className="text-primary group-hover:scale-105 transition-transform duration-300 font-mono"></span>
+            <span className="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
           </button>
 
           {/* DESKTOP NAVIGATION */}
@@ -140,55 +139,67 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* MOBILE TOGGLE */}
+          {/* MOBILE TOGGLE BUTTON */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-text-primary hover:text-primary transition-colors focus:outline-none cursor-pointer"
+            className="md:hidden w-11 h-11 flex items-center justify-center rounded-xl bg-card border border-card-border text-text-primary hover:text-primary transition-colors focus:outline-none cursor-pointer"
             aria-label="Toggle navigation menu"
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
 
         </div>
       </header>
 
-      {/* MOBILE NAV DRAWER */}
+      {/* MOBILE NAV OVERLAY & FLOATING DRAWER */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed top-[73px] left-0 right-0 bg-card/95 backdrop-blur-xl border-b border-card-border z-30 md:hidden overflow-hidden shadow-xl"
-          >
-            <nav className="flex flex-col px-6 py-8 gap-4 text-left">
-              {navLinks.map((link) => {
-                const isActive = activeSection === link.id;
-                return (
-                  <button
-                    key={link.id}
-                    onClick={() => handleLinkClick(link.id)}
-                    className={`flex items-center justify-between py-3 px-4 rounded-xl text-base font-bold transition-all duration-300 cursor-pointer ${
-                      isActive
-                        ? "bg-primary/15 text-primary"
-                        : "text-text-muted hover:text-text-primary hover:bg-surface-tertiary"
-                    }`}
-                  >
-                    <span>{link.label}</span>
-                    {isActive && <div className="w-1.5 h-1.5 rounded-full bg-primary" />}
-                  </button>
-                );
-              })}
-              
-              <button
-                onClick={() => handleLinkClick("contact")}
-                className="bg-primary hover:bg-primary-hover text-white text-center py-4 rounded-xl font-bold mt-4 shadow-md transition-colors"
-              >
-                Let's Talk
-              </button>
-            </nav>
-          </motion.div>
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="fixed inset-0 bg-black/40 backdrop-blur-xs z-30 md:hidden"
+            />
+
+            {/* Menu Card */}
+            <motion.div
+              initial={{ opacity: 0, y: -10, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.98 }}
+              transition={{ duration: 0.2 }}
+              className="fixed top-18 left-3 right-3 bg-card/95 backdrop-blur-2xl border border-card-border rounded-2xl z-40 md:hidden overflow-hidden shadow-2xl max-h-[calc(100vh-90px)] overflow-y-auto"
+            >
+              <nav className="flex flex-col p-4 gap-2 text-left">
+                {navLinks.map((link) => {
+                  const isActive = activeSection === link.id;
+                  return (
+                    <button
+                      key={link.id}
+                      onClick={() => handleLinkClick(link.id)}
+                      className={`flex items-center justify-between py-3 px-4 rounded-xl text-base font-bold transition-all duration-200 cursor-pointer ${
+                        isActive
+                          ? "bg-primary/15 text-primary"
+                          : "text-text-muted hover:text-text-primary hover:bg-surface-tertiary"
+                      }`}
+                    >
+                      <span>{link.label}</span>
+                      {isActive && <div className="w-2 h-2 rounded-full bg-primary" />}
+                    </button>
+                  );
+                })}
+                
+                <button
+                  onClick={() => handleLinkClick("contact")}
+                  className="bg-primary hover:bg-primary-hover text-white text-center py-3.5 rounded-xl font-bold mt-2 shadow-md transition-colors w-full cursor-pointer"
+                >
+                  Let's Talk
+                </button>
+              </nav>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

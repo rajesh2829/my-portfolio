@@ -50,7 +50,7 @@ export default function PortfolioSection() {
       tags: ["Next.js", "Node.js", "MongoDB", "Auth", "Portal"],
       type: "Core Product",
       github: "#",
-      live: "https://portal.nexreon.com/",
+      live: "https://app.nexreon.com/login",
     },
   ];
 
@@ -59,16 +59,16 @@ export default function PortfolioSection() {
   );
 
   return (
-    <section id="portfolio" className="py-24 bg-surface-secondary transition-all duration-300 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
-        
+    <section id="portfolio" className="py-16 sm:py-24 bg-surface-secondary transition-all duration-300 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center relative z-10">
+
         {/* HEADER */}
-        <div className="mb-12">
-          <span className="text-primary font-bold text-sm tracking-widest uppercase mb-2 block">My Creations</span>
-          <h2 className="text-4xl font-extrabold text-text-main mb-6">Featured Projects</h2>
-          
+        <div className="mb-8 sm:mb-12">
+          <span className="text-primary font-bold text-xs sm:text-sm tracking-widest uppercase mb-2 block">My Creations</span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-text-main mb-4 sm:mb-6">Featured Projects</h2>
+
           {/* Animated Filter Selector Tabs */}
-          <div className="relative inline-flex items-center gap-2 p-1.5 bg-surface-tertiary border border-card-border rounded-full shadow-inner max-w-full overflow-x-auto no-scrollbar">
+          <div className="relative inline-flex items-center gap-1.5 p-1 bg-surface-tertiary border border-card-border rounded-full shadow-inner max-w-full overflow-x-auto no-scrollbar">
             {[
               { id: "all", label: "All Projects" },
               { id: "fullstack", label: "Full Stack" },
@@ -77,7 +77,7 @@ export default function PortfolioSection() {
               <button
                 key={tab.id}
                 onClick={() => setFilter(tab.id as any)}
-                className={`relative z-10 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${
+                className={`relative z-10 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 whitespace-nowrap cursor-pointer ${
                   filter === tab.id
                     ? "text-white"
                     : "text-text-muted hover:text-text-primary"
@@ -97,7 +97,7 @@ export default function PortfolioSection() {
         </div>
 
         {/* PROJECTS GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[400px] items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 min-h-[400px] items-start">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, idx) => (
               <motion.div
@@ -107,10 +107,10 @@ export default function PortfolioSection() {
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ duration: 0.45 }}
                 key={project.title}
-                className="bg-card border border-card-border rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full group"
+                className="bg-card border border-card-border rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full group text-left"
               >
                 {/* Image Container with Zoom effect */}
-                <div className="relative h-52 overflow-hidden bg-surface-tertiary shrink-0">
+                <div className="relative h-48 sm:h-52 overflow-hidden bg-surface-tertiary shrink-0">
                   <motion.img
                     src={project.image}
                     alt={project.title}
@@ -119,23 +119,24 @@ export default function PortfolioSection() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
                   />
                   {/* Category Type Indicator Badge */}
-                  <span className="absolute top-4 left-4 bg-black/75 backdrop-blur-sm text-white px-3 py-1 rounded-full text-[10px] font-bold border border-white/10 uppercase tracking-wider">
+                  <span className="absolute top-3.5 left-3.5 sm:top-4 sm:left-4 bg-black/75 backdrop-blur-sm text-white px-2.5 sm:px-3 py-1 rounded-full text-[10px] font-bold border border-white/10 uppercase tracking-wider">
                     {project.type}
                   </span>
                 </div>
 
                 {/* Body Content */}
-                <div className="p-6 flex flex-col justify-between flex-grow text-left">
+                <div className="p-5 sm:p-6 flex flex-col justify-between flex-grow">
                   <div>
-                    <h3 className="text-xl font-bold mb-2 text-text-main flex items-center gap-2">
-                      <FaCode className="text-primary text-base" /> {project.title}
+                    <h3 className="text-lg sm:text-xl font-bold mb-2 text-text-main flex items-center gap-2">
+                      <FaCode className="text-primary text-base shrink-0" /> 
+                      <span className="truncate">{project.title}</span>
                     </h3>
-                    <p className="text-text-muted text-sm leading-relaxed mb-5 transition-colors duration-300">
+                    <p className="text-text-muted text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5 transition-colors duration-300">
                       {project.description}
                     </p>
 
                     {/* Tech Badges */}
-                    <div className="flex flex-wrap gap-1.5 mb-6">
+                    <div className="flex flex-wrap gap-1.5 mb-5 sm:mb-6">
                       {project.tags.map((tag) => (
                         <span
                           key={tag}
@@ -148,15 +149,15 @@ export default function PortfolioSection() {
                   </div>
 
                   {/* Call-to-actions */}
-                  <div className="flex gap-4 border-t border-card-border pt-4 mt-auto">
+                  <div className="flex flex-wrap gap-4 border-t border-card-border pt-4 mt-auto">
                     {project.github && project.github !== "#" && (
                       <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-sm font-bold text-text-sub hover:text-primary transition-colors duration-300"
+                        className="flex items-center gap-2 text-xs sm:text-sm font-bold text-text-sub hover:text-primary transition-colors duration-300"
                       >
-                        <FaGithub className="text-base" /> GitHub
+                        <FaGithub className="text-sm sm:text-base" /> GitHub
                       </a>
                     )}
                     {project.live && (
@@ -164,9 +165,9 @@ export default function PortfolioSection() {
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-sm font-bold text-primary hover:text-primary-hover transition-colors duration-300"
+                        className="flex items-center gap-2 text-xs sm:text-sm font-bold text-primary hover:text-primary-hover transition-colors duration-300"
                       >
-                        <FaExternalLinkAlt className="text-xs" /> Visit Live
+                        <FaExternalLinkAlt className="text-[11px] sm:text-xs" /> Visit Live
                       </a>
                     )}
                   </div>
