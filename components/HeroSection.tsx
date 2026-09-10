@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
-import { MdEmail, MdArrowForward } from "react-icons/md";
+import { MdEmail, MdArrowForward, MdDownload } from "react-icons/md";
 import { Zap, ShieldCheck, HeartHandshake } from "lucide-react";
 
 export default function HeroSection() {
