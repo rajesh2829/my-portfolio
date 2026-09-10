@@ -9,6 +9,7 @@ import {
   FaBriefcase,
   FaCode,
   FaCheckCircle,
+  FaCertificate,
 } from "react-icons/fa";
 
 type TimelineItem = {
@@ -27,7 +28,7 @@ export default function AboutAndJourney() {
 
   const timeline: TimelineItem[] = [
     {
-      year: "2023 - Present",
+      year: "2023 - 2026",
       title: "Full Stack Developer",
       subtitle: "Nexreon / Freelance",
       type: "experience",
@@ -53,6 +54,29 @@ export default function AboutAndJourney() {
       ],
       tags: ["React", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Git"],
       icon: <FaLaptopCode size={18} />,
+    },
+    {
+      year: "2022",
+      title: "Software Testing Certification (Manual & Automation)",
+      subtitle: "Professional Certification & Hands-on Training",
+      type: "education",
+      desc: "Completed a specialized Software Testing certification course after graduation, acquiring in-depth knowledge and hands-on experience in Manual Testing and Automation Testing.",
+      achievements: [
+        "Mastered Manual Testing methodologies, including SDLC, STLC, test plan formulation, test case creation, and bug life cycle tracking.",
+        "Gained practical hands-on experience in Automation Testing, building automated test scripts to validate UI components and user workflows.",
+        "Conducted API testing using Postman, executed smoke, regression, and exploratory testing, and documented defects for rapid resolution."
+      ],
+      tags: [
+        "Manual Testing",
+        "Automation Testing",
+        "STLC & SDLC",
+        "Test Cases & Scenarios",
+        "Jest",
+        "Cypress",
+        "Postman API",
+        "Defect Tracking"
+      ],
+      icon: <FaCertificate size={18} />,
     },
     {
       year: "2021 - 2022",
@@ -191,6 +215,8 @@ export default function AboutAndJourney() {
                 "Next.js",
                 "Node.js",
                 "TypeScript",
+                "Manual Testing",
+                "Automation Testing",
                 "Express",
                 "MongoDB",
                 "Tailwind CSS",
@@ -234,11 +260,10 @@ export default function AboutAndJourney() {
               <button
                 key={tab.id}
                 onClick={() => setActiveCategory(tab.id as any)}
-                className={`relative z-10 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 whitespace-nowrap cursor-pointer ${
-                  activeCategory === tab.id
-                    ? "text-white"
-                    : "text-text-muted hover:text-text-primary"
-                }`}
+                className={`relative z-10 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 whitespace-nowrap cursor-pointer ${activeCategory === tab.id
+                  ? "text-white"
+                  : "text-text-muted hover:text-text-primary"
+                  }`}
               >
                 {activeCategory === tab.id && (
                   <motion.div
