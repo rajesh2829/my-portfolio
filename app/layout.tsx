@@ -16,8 +16,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Rajesh | Full Stack Developer",
-  description: "Portfolio of Rajesh - Full Stack Developer",
+  title: "Rajesh | Frontend Developer (React.js, Next.js, TypeScript)",
+  description:
+    "Portfolio of Rajesh - Frontend Developer specializing in React.js, Next.js, TypeScript, and modern web applications with 3+ years experience, backed by an Agricultural Engineering & irrigation background.",
+  keywords: [
+    "Frontend Developer",
+    "React Developer",
+    "Next.js Developer",
+    "TypeScript Developer",
+    "JavaScript",
+    "Agricultural Engineering",
+    "Irrigation Projects",
+    "PMKSY",
+    "Per Drop More Crop",
+  ],
 };
 
 export const viewport: Viewport = {
