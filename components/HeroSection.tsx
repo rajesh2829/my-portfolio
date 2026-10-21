@@ -12,9 +12,12 @@ export default function HeroSection() {
   const [text] = useTypewriter({
     words: [
       "Full Stack Developer",
+      "Frontend Developer",
+      "React.js Specialist",
       "React Native Expert",
       "Next.js Developer",
       "Backend & API Architect",
+      "Modern Web Applications",
     ],
     loop: 0, // infinite
     typeSpeed: 80,
@@ -37,24 +40,25 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      style={{ backgroundImage: 'linear-gradient(to right, var(--bg-gradient-from), var(--bg-gradient-via), var(--bg-gradient-to))' }}
+      style={{
+        backgroundImage:
+          "linear-gradient(to right, var(--bg-gradient-from), var(--bg-gradient-via), var(--bg-gradient-to))",
+      }}
       className="w-full relative min-h-screen flex items-center pt-24 sm:pt-28 pb-14 sm:pb-16 px-4 sm:px-6 overflow-hidden transition-all duration-300"
     >
       {/* Background Neon Gradients */}
       <div
-        style={{ backgroundColor: 'var(--circle-bg-1)' }}
+        style={{ backgroundColor: "var(--circle-bg-1)" }}
         className="absolute -top-16 -left-16 w-60 sm:w-80 h-60 sm:h-80 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse pointer-events-none transition-colors duration-300"
       ></div>
       <div
-        style={{ backgroundColor: 'var(--circle-bg-2)' }}
+        style={{ backgroundColor: "var(--circle-bg-2)" }}
         className="absolute bottom-10 right-10 w-72 sm:w-96 h-72 sm:h-96 rounded-full mix-blend-multiply filter blur-3xl opacity-25 animate-pulse pointer-events-none transition-colors duration-300"
       ></div>
 
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center z-10">
-
         {/* LEFT COLUMN: HERO INTRO TEXT */}
         <div className="lg:col-span-7 text-center lg:text-left flex flex-col items-center lg:items-start">
-
           {/* Pulsing Status Badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -66,7 +70,9 @@ export default function HeroSection() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#25d366] opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-[#25d366]"></span>
             </span>
-            <span className="text-xs font-semibold text-text-primary">Available for new projects</span>
+            <span className="text-xs font-semibold text-text-primary">
+              Available for new projects
+            </span>
           </motion.div>
 
           {/* Subheading Greeting */}
@@ -76,7 +82,11 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-base sm:text-lg md:text-xl font-medium text-text-sub"
           >
-            Hey, I’m <span className="font-extrabold text-primary">Rajesh Samysundaram</span> 👋
+            Hey, I’m{" "}
+            <span className="font-extrabold text-primary">
+              Rajesh Samysundaram
+            </span>{" "}
+            👋
           </motion.p>
 
           {/* Typewriter Title */}
@@ -93,6 +103,16 @@ export default function HeroSection() {
             <Cursor cursorStyle="|" />
           </motion.h1>
 
+          {/* Primary Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className="mt-1 font-semibold text-primary text-xs sm:text-sm tracking-wide uppercase"
+          >
+            React.js | Next.js | TypeScript
+          </motion.p>
+
           {/* Short Summary Description */}
           <motion.p
             initial={{ opacity: 0, y: 15 }}
@@ -100,7 +120,9 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-text-muted leading-relaxed max-w-xl"
           >
-            Specialist in high-performance React Native (Expo) mobile applications and scalable Next.js & Node.js web portals. Helping tech teams deploy clean, maintainable systems.
+            Building modern, responsive web applications with 3+ years of
+            frontend development experience, backed by a background in
+            Agricultural Engineering and irrigation projects.
           </motion.p>
 
           {/* Call to Actions */}
@@ -119,7 +141,7 @@ export default function HeroSection() {
             </button>
 
             <a
-              href="/resume.pdf"
+              href="/Rajesh_dev.pdf"
               download
               className="bg-card border border-card-border hover:bg-surface-tertiary text-text-primary px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl shadow-md hover:translate-y-[-2px] transition-all duration-300 font-bold text-center cursor-pointer w-full sm:w-auto"
             >
@@ -135,10 +157,22 @@ export default function HeroSection() {
             className="flex gap-3 sm:gap-4 mt-6 sm:mt-8"
           >
             {[
-              { icon: <FaGithub size={19} />, href: "https://github.com/yourgithub" },
-              { icon: <FaLinkedin size={19} />, href: "https://www.linkedin.com/in/rajesh-samysundaram/?skipRedirect=true" },
-              { icon: <FaWhatsapp size={19} className="text-[#25d366]" />, href: "https://wa.me/919790614060" },
-              { icon: <MdEmail size={19} />, href: "mailto:srajeshs021@gmail.com" },
+              {
+                icon: <FaGithub size={19} />,
+                href: "https://github.com/yourgithub",
+              },
+              {
+                icon: <FaLinkedin size={19} />,
+                href: "https://www.linkedin.com/in/rajesh-samysundaram/?skipRedirect=true",
+              },
+              {
+                icon: <FaWhatsapp size={19} className="text-[#25d366]" />,
+                href: "https://wa.me/919790614060",
+              },
+              {
+                icon: <MdEmail size={19} />,
+                href: "mailto:srajeshs021@gmail.com",
+              },
             ].map((soc, index) => (
               <a
                 key={index}
@@ -151,12 +185,10 @@ export default function HeroSection() {
               </a>
             ))}
           </motion.div>
-
         </div>
 
         {/* RIGHT COLUMN: INTERACTIVE PROFILE DISPLAY */}
         <div className="lg:col-span-5 flex flex-col items-center justify-center relative mt-6 lg:mt-0">
-
           {/* Main profile frame */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -182,14 +214,20 @@ export default function HeroSection() {
             {/* FLOATING STATS (Desktop) */}
             <motion.div
               animate={{ y: [0, -6, 0] }}
-              transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
+              transition={{
+                repeat: Infinity,
+                duration: 3.5,
+                ease: "easeInOut",
+              }}
               className="hidden md:flex absolute -left-10 bottom-12 bg-card/90 backdrop-blur-md border border-card-border p-3 rounded-2xl shadow-xl items-center gap-2.5 z-20"
             >
               <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
                 <Zap size={16} />
               </div>
               <div className="text-left">
-                <p className="text-xs text-text-muted font-medium">Experience</p>
+                <p className="text-xs text-text-muted font-medium">
+                  Experience
+                </p>
                 <p className="text-sm font-bold text-text-main">3+ Years</p>
               </div>
             </motion.div>
@@ -204,7 +242,9 @@ export default function HeroSection() {
               </div>
               <div className="text-left">
                 <p className="text-xs text-text-muted font-medium">Solutions</p>
-                <p className="text-sm font-bold text-text-main">Secure & Robust</p>
+                <p className="text-sm font-bold text-text-main">
+                  Secure & Robust
+                </p>
               </div>
             </motion.div>
 
@@ -235,10 +275,11 @@ export default function HeroSection() {
             </div>
             <div className="bg-card/90 border border-card-border p-2 rounded-xl text-center shadow-sm">
               <p className="text-[10px] text-text-muted">Approach</p>
-              <p className="text-xs font-extrabold text-[#db2777]">Client 1st</p>
+              <p className="text-xs font-extrabold text-[#db2777]">
+                Client 1st
+              </p>
             </div>
           </div>
-
         </div>
       </div>
 
@@ -252,7 +293,6 @@ export default function HeroSection() {
           <div className="w-1 h-2 rounded-full bg-primary" />
         </motion.div>
       </div>
-
     </section>
   );
 }

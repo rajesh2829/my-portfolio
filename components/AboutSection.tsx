@@ -10,7 +10,11 @@ import {
   FaCode,
   FaCheckCircle,
   FaCertificate,
+  FaArrowRight,
 } from "react-icons/fa";
+import { Sprout } from "lucide-react";
+import PmksyModal from "./PmksyModal";
+import TransitionStory from "./TransitionStory";
 
 type TimelineItem = {
   year: string;
@@ -21,39 +25,50 @@ type TimelineItem = {
   achievements: string[];
   tags: string[];
   icon: React.ReactNode;
+  hasCaseStudy?: boolean;
 };
 
 export default function AboutAndJourney() {
-  const [activeCategory, setActiveCategory] = useState<"all" | "experience" | "education">("all");
+  const [activeCategory, setActiveCategory] = useState<
+    "all" | "experience" | "education"
+  >("all");
+  const [isPmksyModalOpen, setIsPmksyModalOpen] = useState(false);
 
   const timeline: TimelineItem[] = [
     {
       year: "2023 - 2026",
-      title: "Full Stack Developer",
-      subtitle: "Nexreon / Freelance",
+      title: "Frontend Developer / React Developer",
+      subtitle: "Thidiff Technologies",
       type: "experience",
-      desc: "Architecting and implementing next-generation web applications, client dashboards, and responsive portfolios.",
+      desc: "Architecting and implementing modern, responsive frontend web applications, reusable component systems, and high-performance client dashboards.",
       achievements: [
-        "Built responsive client sites resulting in a 40% improvement in load times.",
-        "Integrated robust Node.js REST APIs with MongoDB for high-performance data handling.",
-        "Engineered persistent multi-theme features supporting user preference overrides."
+        "Built responsive client web applications resulting in 40% improvement in load times and enhanced Core Web Vitals.",
+        "Engineered scalable UI architectures using Next.js, React, TypeScript, and Tailwind CSS.",
+        "Integrated robust REST APIs and state management solutions for seamless real-time user experiences.",
       ],
-      tags: ["Next.js", "React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
-      icon: <FaBriefcase size={18} />,
+      tags: [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "JavaScript",
+        "Tailwind CSS",
+        "REST APIs",
+      ],
+      icon: <FaLaptopCode size={18} />,
     },
     {
       year: "2022 - 2023",
-      title: "Frontend Web Developer",
-      subtitle: "Independent Contracts",
+      title: "Full Stack & Frontend Development Learning",
+      subtitle: "Independent Contracts & Bootcamps",
       type: "experience",
-      desc: "Designed and built highly interactive frontend applications and single-page dashboards.",
+      desc: "Built interactive frontend web applications and single-page dashboards, mastering modern web architecture, JavaScript ES6+, and UI components.",
       achievements: [
         "Crafted rich UI interfaces using Tailwind CSS and Framer Motion micro-animations.",
         "Interfaced with public REST APIs and handled client-side state caching.",
-        "Coached client product teams on modern Web Vitals and SEO optimization methods."
+        "Coached client product teams on modern Web Vitals and SEO optimization methods.",
       ],
       tags: ["React", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Git"],
-      icon: <FaLaptopCode size={18} />,
+      icon: <FaCode size={18} />,
     },
     {
       year: "2022",
@@ -64,7 +79,7 @@ export default function AboutAndJourney() {
       achievements: [
         "Mastered Manual Testing methodologies, including SDLC, STLC, test plan formulation, test case creation, and bug life cycle tracking.",
         "Gained practical hands-on experience in Automation Testing, building automated test scripts to validate UI components and user workflows.",
-        "Conducted API testing using Postman, executed smoke, regression, and exploratory testing, and documented defects for rapid resolution."
+        "Conducted API testing using Postman, executed smoke, regression, and exploratory testing, and documented defects for rapid resolution.",
       ],
       tags: [
         "Manual Testing",
@@ -74,22 +89,31 @@ export default function AboutAndJourney() {
         "Jest",
         "Cypress",
         "Postman API",
-        "Defect Tracking"
+        "Defect Tracking",
       ],
       icon: <FaCertificate size={18} />,
     },
     {
-      year: "2021 - 2022",
-      title: "Full Stack Development Learning",
-      subtitle: "Self-Directed Bootcamps",
-      type: "education",
-      desc: "Enrolled in online bootcamps and intensive training to master Web Technologies, Data Structures, and Software Engineering principles.",
+      year: "2021 – 2022",
+      title: "Project Engineer / Agriculture Officer",
+      subtitle: "Roots Irrigation",
+      type: "experience",
+      desc: "Worked on agricultural irrigation projects involving drip and sprinkler irrigation, field-level water management, farmer support, site visits, and project coordination.",
       achievements: [
-        "Completed 15+ complex sandbox projects spanning databases, backends, and frontends.",
-        "Solved 300+ programming challenges on algorithms and clean code practices."
+        "Conducted agricultural field visits and assessed land, crop, and irrigation requirements.",
+        "Assisted with planning and implementation of drip and sprinkler irrigation systems.",
+        "Guided farmers on efficient irrigation practices, system usage, and water management.",
+        "Coordinated field activities, farmer documentation, installation-related work, and project follow-ups.",
       ],
-      tags: ["JavaScript ES6+", "Data Structures", "Node.js", "SQL", "Git Hub"],
-      icon: <FaUserGraduate size={18} />,
+      tags: [
+        "Drip Irrigation",
+        "Sprinkler Systems",
+        "PMKSY / PDMC",
+        "Field Water Management",
+        "Farmer Guidance",
+      ],
+      icon: <Sprout size={18} className="text-emerald-500" />,
+      hasCaseStudy: true,
     },
     {
       year: "2017 – 2021",
@@ -100,36 +124,37 @@ export default function AboutAndJourney() {
       achievements: [
         "Graduated with a Bachelor of Engineering in Agricultural Engineering.",
         "Gained practical knowledge of agricultural machinery, irrigation systems, soil and water management, and farm technologies.",
-        "Completed academic projects involving agricultural engineering concepts and technology-based solutions."
+        "Completed academic projects involving agricultural engineering concepts and technology-based solutions.",
       ],
       tags: [
         "Agricultural Engineering",
         "Irrigation & Water Management",
         "Farm Machinery",
         "Soil Science",
-        "Agricultural Technology"
+        "Agricultural Technology",
       ],
       icon: <FaRocket size={18} />,
     },
   ];
 
   const filteredTimeline = timeline.filter(
-    (item) => activeCategory === "all" || item.type === activeCategory
+    (item) => activeCategory === "all" || item.type === activeCategory,
   );
 
   return (
     <section
       id="about"
-      style={{ backgroundImage: 'linear-gradient(to bottom right, var(--bg-primary), var(--bg-secondary))' }}
+      style={{
+        backgroundImage:
+          "linear-gradient(to bottom right, var(--bg-primary), var(--bg-secondary))",
+      }}
       className="py-16 sm:py-24 transition-all duration-300 relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-
         {/* =========================
              ABOUT SECTION (GRID)
          ========================== */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-
           {/* LEFT — Interactive Developer Terminal Mockup */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -155,15 +180,44 @@ export default function AboutAndJourney() {
 
               {/* Window Body */}
               <div className="p-4 sm:p-6 space-y-1.5 sm:space-y-2 text-[#e6edf3] leading-relaxed overflow-x-auto no-scrollbar">
-                <p><span className="text-[#ff7b72]">const</span> <span className="text-[#d2a8ff]">developer</span> = &#123;</p>
-                <p className="pl-4"><span className="text-[#79c0ff]">name</span>: <span className="text-[#a5d6ff]">"Rajesh"</span>,</p>
-                <p className="pl-4"><span className="text-[#79c0ff]">role</span>: <span className="text-[#a5d6ff]">"Full Stack Developer"</span>,</p>
-                <p className="pl-4"><span className="text-[#79c0ff]">skills</span>: [</p>
-                <p className="pl-8"><span className="text-[#a5d6ff]">"React"</span>, <span className="text-[#a5d6ff]">"Next.js"</span>, <span className="text-[#a5d6ff]">"Node.js"</span>,</p>
-                <p className="pl-8"><span className="text-[#a5d6ff]">"TypeScript"</span>, <span className="text-[#a5d6ff]">"TailwindCSS"</span></p>
+                <p>
+                  <span className="text-[#ff7b72]">const</span>{" "}
+                  <span className="text-[#d2a8ff]">developer</span> = &#123;
+                </p>
+                <p className="pl-4">
+                  <span className="text-[#79c0ff]">name</span>:{" "}
+                  <span className="text-[#a5d6ff]">"Rajesh"</span>,
+                </p>
+                <p className="pl-4">
+                  <span className="text-[#79c0ff]">role</span>:{" "}
+                  <span className="text-[#a5d6ff]">"Software Developer"</span>,
+                </p>
+                <p className="pl-4">
+                  <span className="text-[#79c0ff]">skills</span>: [
+                </p>
+                <p className="pl-8">
+                  <span className="text-[#a5d6ff]">"React"</span>,{" "}
+                  <span className="text-[#a5d6ff]">"Next.js"</span>,{" "}
+                  <span className="text-[#a5d6ff]">"TypeScript"</span>,
+                </p>
+                <p className="pl-8">
+                  <span className="text-[#a5d6ff]">"JavaScript"</span>,{" "}
+                  <span className="text-[#a5d6ff]">"TailwindCSS"</span>
+                </p>
                 <p className="pl-4">],</p>
-                <p className="pl-4"><span className="text-[#79c0ff]">location</span>: <span className="text-[#a5d6ff]">"India"</span>,</p>
-                <p className="pl-4"><span className="text-[#79c0ff]">hobbies</span>: [<span className="text-[#a5d6ff]">"building_projects"</span>, <span className="text-[#a5d6ff]">"learning_tech"</span>]</p>
+                <p className="pl-4">
+                  <span className="text-[#79c0ff]">location</span>:{" "}
+                  <span className="text-[#a5d6ff]">"India"</span>,
+                </p>
+                <p className="pl-4">
+                  <span className="text-[#79c0ff]">background</span>:{" "}
+                  <span className="text-[#a5d6ff]">"Agri Engineering"</span>,
+                </p>
+                <p className="pl-4">
+                  <span className="text-[#79c0ff]">hobbies</span>: [
+                  <span className="text-[#a5d6ff]">"building_projects"</span>,{" "}
+                  <span className="text-[#a5d6ff]">"learning_tech"</span>]
+                </p>
                 <p>&#125;;</p>
               </div>
             </div>
@@ -177,24 +231,57 @@ export default function AboutAndJourney() {
             viewport={{ once: true }}
             className="lg:col-span-7"
           >
-            <span className="text-primary font-bold text-xs sm:text-sm tracking-widest uppercase mb-2 block">Who I Am</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 sm:mb-6 text-text-main">About Me</h2>
+            <span className="text-primary font-bold text-xs sm:text-sm tracking-widest uppercase mb-2 block">
+              Who I Am
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 sm:mb-6 text-text-main">
+              About Me
+            </h2>
 
             <p className="text-base sm:text-lg text-text-sub leading-relaxed mb-6 sm:mb-8">
-              I’m <span className="font-bold text-text-main">Rajesh</span>, a passionate
-              <span className="text-primary font-semibold"> Full Stack Developer</span>{" "}
-              from India. I specialize in building modern, scalable applications
-              using React, Next.js, Node.js, and TypeScript.
-              <br /><br />
-              I love crafting smooth UI/UX experiences and turning complex ideas into clean digital products.
+              I’m <span className="font-bold text-text-main">Rajesh</span>, a
+              passionate
+              <span className="text-primary font-semibold">
+                {" "}
+                Software Developer{" "}
+              </span>{" "}
+              with 3+ years of professional experience building modern,
+              scalable, and high-performance web applications. I specialize in
+              React.js, Next.js, TypeScript, and JavaScript, with additional
+              hands-on experience contributing to mobile application development
+              using React Native.
+              <br />
+              <br />I enjoy crafting intuitive user interfaces, building
+              reusable and maintainable components, integrating APIs, and
+              solving real-world technical challenges. My focus is on creating
+              seamless digital experiences through clean code, responsive
+              design, and performance-driven development.
             </p>
 
             {/* Stats */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-5 text-left mb-6 sm:mb-8">
               {[
-                { number: "3+", label: "Years Experience", icon: <FaBriefcase className="text-primary text-xl sm:text-2xl mb-2" /> },
-                { number: "12+", label: "Projects Completed", icon: <FaLaptopCode className="text-primary text-xl sm:text-2xl mb-2" /> },
-                { number: "5+", label: "Tech Stacks Used", icon: <FaRocket className="text-primary text-xl sm:text-2xl mb-2" /> },
+                {
+                  number: "3+",
+                  label: "Years Experience",
+                  icon: (
+                    <FaBriefcase className="text-primary text-xl sm:text-2xl mb-2" />
+                  ),
+                },
+                {
+                  number: "12+",
+                  label: "Projects Completed",
+                  icon: (
+                    <FaLaptopCode className="text-primary text-xl sm:text-2xl mb-2" />
+                  ),
+                },
+                {
+                  number: "5+",
+                  label: "Tech Stacks Used",
+                  icon: (
+                    <FaRocket className="text-primary text-xl sm:text-2xl mb-2" />
+                  ),
+                },
               ].map((item, i) => (
                 <motion.div
                   key={i}
@@ -202,8 +289,12 @@ export default function AboutAndJourney() {
                   className="glass-card p-4 sm:p-5 rounded-2xl shadow-sm transition-all duration-300"
                 >
                   {item.icon}
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-primary">{item.number}</h3>
-                  <p className="text-xs sm:text-sm text-text-muted mt-1 font-medium">{item.label}</p>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-primary">
+                    {item.number}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-text-muted mt-1 font-medium">
+                    {item.label}
+                  </p>
                 </motion.div>
               ))}
             </div>
@@ -213,13 +304,15 @@ export default function AboutAndJourney() {
               {[
                 "React",
                 "Next.js",
-                "Node.js",
                 "TypeScript",
+                "JavaScript",
+                "Tailwind CSS",
+                "REST APIs",
                 "Manual Testing",
                 "Automation Testing",
+                "Node.js",
                 "Express",
                 "MongoDB",
-                "Tailwind CSS",
               ].map((skill, index) => (
                 <motion.span
                   key={index}
@@ -247,8 +340,12 @@ export default function AboutAndJourney() {
           viewport={{ once: true }}
           className="text-center mt-20 sm:mt-28 mb-8 sm:mb-10"
         >
-          <span className="text-primary font-bold text-xs sm:text-sm tracking-widest uppercase mb-2 block">My History</span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-text-main mb-6">My Journey</h2>
+          <span className="text-primary font-bold text-xs sm:text-sm tracking-widest uppercase mb-2 block">
+            My History
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-text-main mb-6">
+            My Journey
+          </h2>
 
           {/* Interactive Category Selector Tabs */}
           <div className="relative inline-flex items-center gap-1.5 p-1 bg-surface-tertiary border border-card-border rounded-full shadow-inner max-w-full overflow-x-auto no-scrollbar">
@@ -260,10 +357,11 @@ export default function AboutAndJourney() {
               <button
                 key={tab.id}
                 onClick={() => setActiveCategory(tab.id as any)}
-                className={`relative z-10 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 whitespace-nowrap cursor-pointer ${activeCategory === tab.id
-                  ? "text-white"
-                  : "text-text-muted hover:text-text-primary"
-                  }`}
+                className={`relative z-10 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 whitespace-nowrap cursor-pointer ${
+                  activeCategory === tab.id
+                    ? "text-white"
+                    : "text-text-muted hover:text-text-primary"
+                }`}
               >
                 {activeCategory === tab.id && (
                   <motion.div
@@ -302,9 +400,10 @@ export default function AboutAndJourney() {
                     </div>
 
                     {/* Timeline Content Block */}
-                    <div className={`w-[calc(100%-28px)] sm:w-[calc(50%-32px)] ml-7 sm:ml-0 ${isEven ? "sm:mr-auto" : "sm:ml-auto"}`}>
+                    <div
+                      className={`w-[calc(100%-28px)] sm:w-[calc(50%-32px)] ml-7 sm:ml-0 ${isEven ? "sm:mr-auto" : "sm:ml-auto"}`}
+                    >
                       <div className="glass-card p-4 sm:p-6 rounded-2xl shadow-sm border-l-4 border-l-primary hover:shadow-lg transition-all duration-300 text-left">
-
                         {/* Header Details */}
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-3 mb-3">
                           <div className="flex items-center gap-2.5">
@@ -312,8 +411,14 @@ export default function AboutAndJourney() {
                               {item.icon}
                             </div>
                             <div>
-                              <h4 className="text-sm sm:text-base font-bold text-text-main leading-snug">{item.title}</h4>
-                              {item.subtitle && <p className="text-xs text-text-muted font-medium">{item.subtitle}</p>}
+                              <h4 className="text-sm sm:text-base font-bold text-text-main leading-snug">
+                                {item.title}
+                              </h4>
+                              {item.subtitle && (
+                                <p className="text-xs text-text-muted font-medium">
+                                  {item.subtitle}
+                                </p>
+                              )}
                             </div>
                           </div>
                           <span className="self-start sm:self-auto text-[11px] sm:text-xs font-extrabold text-primary bg-primary/10 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full shrink-0">
@@ -322,7 +427,9 @@ export default function AboutAndJourney() {
                         </div>
 
                         {/* Description */}
-                        <p className="text-text-sub text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">{item.desc}</p>
+                        <p className="text-text-sub text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
+                          {item.desc}
+                        </p>
 
                         {/* Achievements Bullet List */}
                         {item.achievements.length > 0 && (
@@ -348,6 +455,22 @@ export default function AboutAndJourney() {
                           ))}
                         </div>
 
+                        {/* Special PMKSY Experience CTA for Agriculture card */}
+                        {item.hasCaseStudy && (
+                          <div className="mt-4 pt-3.5 border-t border-card-border flex items-center justify-between gap-2">
+                            <button
+                              type="button"
+                              onClick={() => setIsPmksyModalOpen(true)}
+                              className="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-primary-hover transition-colors group cursor-pointer"
+                            >
+                              <span>View PMKSY Experience</span>
+                              <FaArrowRight className="text-[10px] group-hover:translate-x-1 transition-transform" />
+                            </button>
+                            <span className="text-[10px] text-primary font-bold bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-full">
+                              Case Study
+                            </span>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </motion.div>
@@ -356,7 +479,18 @@ export default function AboutAndJourney() {
             </AnimatePresence>
           </div>
         </div>
+
+        {/* =========================
+             TRANSITION STORY
+         ========================== */}
+        <TransitionStory />
       </div>
+
+      {/* PMKSY Case Study Modal */}
+      <PmksyModal
+        isOpen={isPmksyModalOpen}
+        onClose={() => setIsPmksyModalOpen(false)}
+      />
 
       {/* GLASS EFFECT */}
       <style>{`
